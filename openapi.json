@@ -1,0 +1,225 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Cinema",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http:\/\/localhost\/cinema\/openapi.yaml"
+    }
+  ],
+  "paths": {
+    "\/shows": {
+      "get": {
+        "summary": "Cinema's repertoire",
+        "operationId": "shows",
+        "responses": {
+          "200": {
+            "description": "Expected response to a valid request",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#components\/schemas\/Show"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Movie": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "director": {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "yearOfBirth": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "firstName",
+              "lastName",
+              "yearOfBirth"
+            ],
+            "example": {
+              "firstName": "Jack",
+              "lastName": "Nicholson",
+              "yearOfBirth": 1937
+            }
+          },
+          "actors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "yearOfBirth": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "yearOfBirth"
+              ],
+              "example": {
+                "firstName": "Jack",
+                "lastName": "Nicholson",
+                "yearOfBirth": 1937
+              }
+            }
+          }
+        },
+        "example": {
+          "title": "The Shining",
+          "year": 1980,
+          "director": {
+            "firstName": "Stanley",
+            "lastName": "Kubrick"
+          },
+          "actors": [
+            {
+              "firstName": "Jack",
+              "lastName": "Nicholson"
+            },
+            {
+              "firstName": "Shelley",
+              "lastName": "Duvall"
+            }
+          ]
+        }
+      },
+      "Show": {
+        "type": "object",
+        "properties": {
+          "movie": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "genre": {
+                "type": "string"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "director": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "yearOfBirth": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "yearOfBirth"
+                ],
+                "example": {
+                  "firstName": "Jack",
+                  "lastName": "Nicholson",
+                  "yearOfBirth": 1937
+                }
+              },
+              "actors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "yearOfBirth": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "firstName",
+                    "lastName",
+                    "yearOfBirth"
+                  ],
+                  "example": {
+                    "firstName": "Jack",
+                    "lastName": "Nicholson",
+                    "yearOfBirth": 1937
+                  }
+                }
+              }
+            },
+            "example": {
+              "title": "The Shining",
+              "year": 1980,
+              "director": {
+                "firstName": "Stanley",
+                "lastName": "Kubrick"
+              },
+              "actors": [
+                {
+                  "firstName": "Jack",
+                  "lastName": "Nicholson"
+                },
+                {
+                  "firstName": "Shelley",
+                  "lastName": "Duvall"
+                }
+              ]
+            }
+          },
+          "time": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "hall": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
